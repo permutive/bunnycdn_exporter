@@ -367,7 +367,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 
 func main() {
 	var (
-		listenAddress  = kingpin.Flag("web.listen-address", "Address to listen on for web interface and telemetry.").Default(":9580").String()
+		listenAddress  = kingpin.Flag("web.listen-address", "Address to listen on for web interface and telemetry.").Default(":9584").String()
 		metricsPath    = kingpin.Flag("web.telemetry-path", "Path under which to expose metrics.").Default("/metrics").String()
 		bunnyAPIURI    = kingpin.Flag("bunnycdn.api-uri", "API URI on which to get stats from.").Default("https://bunnycdn.com/api").String()
 		bunnyAPIKey    = kingpin.Flag("bunnycdn.api-key", "API key to connect to bunny.").Default(os.Getenv("BUNNYCDN_APIKEY")).String()

@@ -45,12 +45,12 @@ bunnycdn_exporter"
 To run the bunnycdn exporter as a Docker container, run:
 
 ```bash
-docker run -p 9580:9580 permutive/bunnycdn-exporter --bunnycdn.api-key="<API_KEY>"
+docker run -p 9584:9584 permutive/bunnycdn-exporter --bunnycdn.api-key="<API_KEY>"
 ```
 
 alternatively, the API key can be passed as an environment variable:
 ```bash
-docker run -p 9580:9580 -e BUNNYCDN_API_KEY="<API_KEY>" permutive/bunnycdn-exporter"
+docker run -p 9584:9584 -e BUNNYCDN_API_KEY="<API_KEY>" permutive/bunnycdn-exporter"
 ```
 
 [hub]: https://hub.docker.com/r/permutive/bunnycdn-exporter/
