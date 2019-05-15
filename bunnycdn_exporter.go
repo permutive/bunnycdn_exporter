@@ -370,7 +370,7 @@ func main() {
 		listenAddress  = kingpin.Flag("web.listen-address", "Address to listen on for web interface and telemetry.").Default(":9584").String()
 		metricsPath    = kingpin.Flag("web.telemetry-path", "Path under which to expose metrics.").Default("/metrics").String()
 		bunnyAPIURI    = kingpin.Flag("bunnycdn.api-uri", "API URI on which to get stats from.").Default("https://bunnycdn.com/api").String()
-		bunnyAPIKey    = kingpin.Flag("bunnycdn.api-key", "API key to connect to bunny.").Default(os.Getenv("BUNNYCDN_APIKEY")).String()
+		bunnyAPIKey    = kingpin.Flag("bunnycdn.api-key", "API key to connect to bunny.").Default(os.Getenv("BUNNYCDN_API_KEY")).String()
 		bunnySSLVerify = kingpin.Flag("bunnycdn.ssl-verify", "Flag that enables SSL certificate verification for the API URI").Default("true").Bool()
 		bunnyTimeout   = kingpin.Flag("bunnycdn.timeout", "Timeout for trying to get stats from BunnyCDN.").Default("10s").Duration()
 	)
