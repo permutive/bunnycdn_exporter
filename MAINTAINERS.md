@@ -1,1 +1,1 @@
-* Tobias Schmidt <tobidt@gmail.com>
+* Tulio de Souza <bunnycdn_exporter@tuliosouza.com>

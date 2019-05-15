@@ -1,7 +1,8 @@
 .build
-bin/haproxy_exporter*
-haproxy_exporter
+bin/bunnycdn_exporter*
+bunnycdn_exporter
 *.tar.gz
 *.test
 *.mprof
 *-stamp
+.vscode

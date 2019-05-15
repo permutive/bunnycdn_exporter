@@ -1,0 +1,152 @@
+[
+  {
+    "Id": 34567,
+    "Name": "pullzonename2",
+    "OriginUrl": "https://storage.googleapis.com/gcs-bucket-example",
+    "Enabled": true,
+    "Hostnames": [
+      {
+        "Id": 43217,
+        "Value": "pullzonename2.b-cdn.net",
+        "ForceSSL": true,
+        "IsSystemHostname": true,
+        "HasCertificate": true
+      }
+    ],
+    "StorageZoneId": 0,
+    "AllowedReferrers": [],
+    "BlockedReferrers": [],
+    "BlockedIps": [],
+    "EnableGeoZoneUS": true,
+    "EnableGeoZoneEU": true,
+    "EnableGeoZoneASIA": true,
+    "EnableGeoZoneSA": true,
+    "EnableGeoZoneAF": true,
+    "ZoneSecurityEnabled": false,
+    "ZoneSecurityKey": "72730e8f-08ff-4db3-8fa7-965097a1755f",
+    "ZoneSecurityIncludeHashRemoteIP": false,
+    "IgnoreQueryStrings": true,
+    "MonthlyBandwidthLimit": 0,
+    "MonthlyBandwidthUsed": 74309996,
+    "MonthlyCharges": 0.000831675729999988,
+    "AddHostHeader": false,
+    "Type": 0,
+    "CustomNginxConfig": "",
+    "AccessControlOriginHeaderExtensions": [
+      "eot",
+      "ttf",
+      "woff",
+      "woff2",
+      "css"
+    ],
+    "EnableAccessControlOriginHeader": true,
+    "DisableCookies": true,
+    "BudgetRedirectedCountries": [],
+    "BlockedCountries": [],
+    "EnableOriginShield": false,
+    "CacheControlMaxAgeOverride": -1,
+    "BurstSize": 0,
+    "RequestLimit": 0,
+    "BlockRootPathAccess": false,
+    "CacheQuality": 75,
+    "LimitRatePerSecond": 0,
+    "LimitRateAfter": 0,
+    "ConnectionLimitPerIPCount": 0,
+    "PriceOverride": 0,
+    "AddCanonicalHeader": false,
+    "EnableLogging": true,
+    "IgnoreVaryHeader": true,
+    "EnableCacheSlice": false,
+    "EdgeRules": [
+      {
+        "Guid": "82730e8f-08ff-4db3-8fa7-965097a1755f",
+        "ActionType": 2,
+        "ActionParameter1": "https://storage.googleapis.com/gcs-bucket/folder/",
+        "ActionParameter2": "",
+        "Triggers": [
+          {
+            "Type": 0,
+            "PatternMatches": [
+              "https://pullzonename2.b-cdn.net/folder/*"
+            ],
+            "PatternMatchingType": 0,
+            "Parameter1": ""
+          }
+        ],
+        "TriggerMatchingType": 0,
+        "Description": "models",
+        "Enabled": true
+      }
+    ],
+    "EnableWebPVary": false,
+    "EnableCountryCodeVary": false,
+    "EnableMobileVary": false,
+    "EnableHostnameVary": false,
+    "CnameDomain": "b-cdn.net"
+  },
+  {
+    "Id": 12345,
+    "Name": "pullzonename",
+    "OriginUrl": "http://origin.url.com",
+    "Enabled": true,
+    "Hostnames": [
+      {
+        "Id": 54321,
+        "Value": "pullzonename.b-cdn.net",
+        "ForceSSL": false,
+        "IsSystemHostname": true,
+        "HasCertificate": true
+      }
+    ],
+    "StorageZoneId": 0,
+    "AllowedReferrers": [],
+    "BlockedReferrers": [],
+    "BlockedIps": [],
+    "EnableGeoZoneUS": true,
+    "EnableGeoZoneEU": true,
+    "EnableGeoZoneASIA": true,
+    "EnableGeoZoneSA": true,
+    "EnableGeoZoneAF": true,
+    "ZoneSecurityEnabled": false,
+    "ZoneSecurityKey": "92730e8f-08ff-4db3-8fa7-965097a1755f",
+    "ZoneSecurityIncludeHashRemoteIP": false,
+    "IgnoreQueryStrings": true,
+    "MonthlyBandwidthLimit": 0,
+    "MonthlyBandwidthUsed": 0,
+    "MonthlyCharges": 0,
+    "AddHostHeader": false,
+    "Type": 0,
+    "CustomNginxConfig": "",
+    "AccessControlOriginHeaderExtensions": [
+      "eot",
+      "ttf",
+      "woff",
+      "woff2",
+      "css"
+    ],
+    "EnableAccessControlOriginHeader": true,
+    "DisableCookies": true,
+    "BudgetRedirectedCountries": [],
+    "BlockedCountries": [],
+    "EnableOriginShield": false,
+    "CacheControlMaxAgeOverride": -1,
+    "BurstSize": 0,
+    "RequestLimit": 0,
+    "BlockRootPathAccess": false,
+    "CacheQuality": 75,
+    "LimitRatePerSecond": 0,
+    "LimitRateAfter": 0,
+    "ConnectionLimitPerIPCount": 0,
+    "PriceOverride": 0,
+    "AddCanonicalHeader": false,
+    "EnableLogging": true,
+    "IgnoreVaryHeader": true,
+    "EnableCacheSlice": false,
+    "EdgeRules": [],
+    "EnableWebPVary": false,
+    "EnableCountryCodeVary": false,
+    "EnableMobileVary": false,
+    "EnableHostnameVary": false,
+    "CnameDomain": "b-cdn.net"
+  }
+]

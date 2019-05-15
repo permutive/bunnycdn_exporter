@@ -13,4 +13,4 @@
 
 include Makefile.common
 
-DOCKER_IMAGE_NAME       ?= haproxy-exporter
+DOCKER_IMAGE_NAME       ?= bunnycdn-exporter

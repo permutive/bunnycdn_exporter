@@ -1,5 +1,7 @@
-Exporter for HAProxy stats.
-Copyright 2013-2015 The Prometheus Authors
+Exporter for BunnyCDN stats.
+
+This product includes software developed by
+The Prometheus Authors (based on HAProxy Exporter)
 
 This product includes software developed at
 SoundCloud Ltd. (http://soundcloud.com/).

@@ -18,9 +18,9 @@ jobs:
     - run: make promu
     - run: make
     - store_artifacts:
-        path: haproxy_exporter
-        destination: /build/haproxy_exporter
-    - run: rm -f haproxy_exporter
+        path: bunnycdn_exporter
+        destination: /build/bunnycdn_exporter
+    - run: rm -f bunnycdn_exporter
     - run: git diff --exit-code
 
   build:
@@ -46,7 +46,7 @@ jobs:
     - setup_remote_docker
     - attach_workspace:
         at: .
-    - run: ln -s .build/linux-amd64/haproxy_exporter haproxy_exporter
+    - run: ln -s .build/linux-amd64/bunnycdn_exporter bunnycdn_exporter
     - run: make docker
     - run: make docker DOCKER_REPO=quay.io/prometheus
     - run: docker images
@@ -73,7 +73,7 @@ jobs:
     - store_artifacts:
         path: .tarballs
         destination: releases
-    - run: ln -s .build/linux-amd64/haproxy_exporter haproxy_exporter
+    - run: ln -s .build/linux-amd64/bunnycdn_exporter bunnycdn_exporter
     - run: make docker DOCKER_IMAGE_TAG=$CIRCLE_TAG
     - run: make docker DOCKER_IMAGE_TAG=$CIRCLE_TAG DOCKER_REPO=quay.io/prometheus
     - run: docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
@@ -88,7 +88,7 @@ jobs:
 
 workflows:
   version: 2
-  haproxy_exporter:
+  bunnycdn_exporter:
     jobs:
     - test:
         filters:

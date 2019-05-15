@@ -3,7 +3,7 @@ go:
     # .circle/config.yml should also be updated.
     version: 1.12
 repository:
-    path: github.com/prometheus/haproxy_exporter
+    path: github.com/permutive/bunnycdn_exporter
 build:
     flags: -mod=vendor -a -tags netgo
     ldflags: |
