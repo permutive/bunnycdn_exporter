@@ -57,8 +57,8 @@ docker run -p 9584:9584 -e BUNNYCDN_API_KEY="<API_KEY>" permutive/bunnycdn-expor
 
 ## Development
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/prometheus/bunnycdn_exporter)][goreportcard]
-[![Code Climate](https://codeclimate.com/github/prometheus/bunnycdn_exporter/badges/gpa.svg)][codeclimate]
+[![Go Report Card](https://goreportcard.com/badge/github.com/permutive/bunnycdn_exporter)][goreportcard]
+[![Code Climate](https://codeclimate.com/github/permutive/bunnycdn_exporter/badges/gpa.svg)][codeclimate]
 
 [goreportcard]: https://goreportcard.com/report/github.com/permutive/bunnycdn_exporter
 [codeclimate]: https://codeclimate.com/github/permutive/bunnycdn_exporter
