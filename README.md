@@ -1,4 +1,4 @@
-# HAProxy Exporter for Prometheus
+# BunnyCDN Exporter for Prometheus
 
 This is a simple server that scrapes BunnyCDN stats and exports them via HTTP for
 Prometheus consumption.
@@ -40,7 +40,7 @@ bunnycdn_exporter"
 
 ### Docker
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/prom/haproxy-exporter.svg?maxAge=604800)][hub]
+[![Docker Pulls](https://img.shields.io/docker/pulls/permutive/bunnycdn-exporter.svg?maxAge=604800)][hub]
 
 To run the bunnycdn exporter as a Docker container, run:
 
