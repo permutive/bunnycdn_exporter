@@ -2,10 +2,10 @@
 CURL Command:
 
 # load pull zones
-curl --header "Content-Type: application/json"      --header "Accept: application/json"      --header "AccessKey: 30d84f39-d9f9-4c62-871c-1e0b851d74faa1cfe3ce-f3ca-48b9-b38e-8e4b2366c07d"   'https://bunnycdn.com/api/pullzone' | jq
+curl --header "Content-Type: application/json"      --header "Accept: application/json"      --header "AccessKey: <API_KEY>"   'https://bunnycdn.com/api/pullzone' | jq
 
 # load stats
-curl --header "Content-Type: application/json"      --header "Accept: application/json"      --header "AccessKey: 30d84f39-d9f9-4c62-871c-1e0b851d74faa1cfe3ce-f3ca-48b9-b38e-8e4b2366c07d"   'https://bunnycdn.com/api/statistics?dateFrom=2019-05-01&dateTo=2019-05-10&pullZone=65109&serverZoneId=-1&loadErrors=true' | jq
+curl --header "Content-Type: application/json"      --header "Accept: application/json"      --header "AccessKey: <API_KEY>"   'https://bunnycdn.com/api/statistics?dateFrom=2019-05-01&dateTo=2019-05-10&pullZone=65109&serverZoneId=-1&loadErrors=true' | jq
 
 URL:
 https://bunnycdn.com/api/statistics?
