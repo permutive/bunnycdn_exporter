@@ -316,6 +316,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 		if err != nil {
 			log.Errorf("Unable to collect stats: %v", err)
 			e.totalErrors.Inc()
+			continue
 		}
 		aStatsObj = stats
 		for name, metric := range e.pullZoneMetrics {
