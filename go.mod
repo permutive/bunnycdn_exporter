@@ -1,5 +1,7 @@
 module github.com/permutive/bunnycdn_exporter
 
+go 1.17
+
 require (
 	github.com/alecthomas/assert v0.0.0-20170929043011-405dbfeb8e38 // indirect
 	github.com/alecthomas/colour v0.0.0-20160524082231-60882d9e2721 // indirect
@@ -16,4 +18,14 @@ require (
 	github.com/stretchr/testify v1.2.2 // indirect
 	golang.org/x/sys v0.0.0-20160228042812-19ced1583f73 // indirect
 	gopkg.in/alecthomas/kingpin.v2 v2.2.5
+)
+
+require (
+	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973 // indirect
+	github.com/golang/protobuf v1.2.0 // indirect
+	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
+	github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910 // indirect
+	github.com/prometheus/procfs v0.0.0-20181204211112-1dc9a6cbc91a // indirect
+	golang.org/x/net v0.0.0-20181201002055-351d144fa1fc // indirect
+	golang.org/x/sync v0.0.0-20181108010431-42b317875d0f // indirect
 )

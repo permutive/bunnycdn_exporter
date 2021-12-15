@@ -38,6 +38,7 @@ import (
 const (
 	namespace = "bunnycdn" // For Prometheus metrics.
 
+	metricOriginResponseTime = "OriginResponseTime"
 	metricBandwidthUsed      = "bandwidthUsed"
 	metricBandwidthCached    = "bandwidthCached"
 	metricRequestsServer     = "requestsServed"
@@ -67,6 +68,7 @@ type bunnyLocation struct {
 }
 
 type bunnyStatistics struct {
+	OriginResponseTime     map[string]float64 `json:"OriginResponseTimeChart"`
 	BandwidthUsed          map[string]float64 `json:"BandwidthUsedChart"`
 	BandwidthCached        map[string]float64 `json:"BandwidthCachedChart"`
 	CacheHitRate           map[string]float64 `json:"CacheHitRateChart"`
@@ -119,6 +121,7 @@ var (
 		metricStorageUsed: newMetric("storage_used_bytes", "Storage usage in bytes", nil, nil),
 	}
 	pullZoneMetrics = metricsCollection{
+		metricOriginResponseTime: newMetric("origin_response_time_avg", "The average origin response time.", []string{"pull_zone"}, nil),
 		metricBandwidthUsed:      newMetric("bandwidth_used_bytes_total", "Total bandwidth used in bytes serving traffic.", []string{"pull_zone"}, nil),
 		metricBandwidthCached:    newMetric("bandwidth_cached_bytes_total", "Total bandwidth used in bytes serving cached data.", []string{"pull_zone"}, nil),
 		metricRequestsServer:     newMetric("requests_served_total", "Number of requests served.", []string{"pull_zone"}, nil),
@@ -320,6 +323,8 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 		aStatsObj = stats
 		for name, metric := range e.pullZoneMetrics {
 			switch name {
+			case metricOriginResponseTime:
+				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.OriginResponseTime), pullZone.Name)
 			case metricBandwidthUsed:
 				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.BandwidthUsed), pullZone.Name)
 			case metricBandwidthCached:
