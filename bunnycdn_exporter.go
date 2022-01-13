@@ -316,6 +316,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 		if err != nil {
 			log.Errorf("Unable to collect stats: %v", err)
 			e.totalErrors.Inc()
+			continue
 		}
 		aStatsObj = stats
 		for name, metric := range e.pullZoneMetrics {
@@ -323,7 +324,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 			case metricBandwidthUsed:
 				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.BandwidthUsed), pullZone.Name)
 			case metricBandwidthCached:
-				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.BandwidthUsed), pullZone.Name)
+				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.BandwidthCached), pullZone.Name)
 			case metricRequestsServer:
 				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.RequestsServed), pullZone.Name)
 			case metricPullRequestsPulled:
