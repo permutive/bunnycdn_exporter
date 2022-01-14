@@ -6,10 +6,10 @@ executors:
   # should also be updated.
   golang:
     docker:
-    - image: cimg/go:1.17
-      auth:
-        username: $DOCKER_HUB_USERNAME
-        password: $DOCKER_HUB_PASSWORD
+      - image: cimg/go:1.17
+        auth:
+          username: $DOCKER_HUB_USERNAME
+          password: $DOCKER_HUB_PASSWORD
 
 jobs:
   test:
@@ -42,7 +42,11 @@ jobs:
         destination: /build
 
   docker_hub_master:
-    executor: golang
+    docker:
+    - image: docker:19.03.7
+      auth:
+        username: $DOCKER_HUB_USERNAME
+        password: $DOCKER_HUB_PASSWORD
 
     steps:
     - checkout
@@ -50,12 +54,18 @@ jobs:
     - attach_workspace:
         at: .
     - run: ln -s .build/linux-amd64/bunnycdn_exporter bunnycdn_exporter
-    - run: make docker DOCKER_REPO=ricardoag/bunnycdn_exporter
-    - run: docker images
     - run:
         name: Login to Docker Hub
         command: echo ${DOCKER_HUB_PASSWORD} | docker login -u ${DOCKER_HUB_USERNAME} --password-stdin
-    - run: make docker-publish DOCKER_REPO=ricardoag/bunnycdn_exporter
+    - run:
+        name: Build the Docker image
+        command: docker build -t ricardoag/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH .
+    - run:
+        name: Docker Push the image to the Docker registry
+        command: docker push ricardoag/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH
+    # - run: make docker DOCKER_REPO=ricardoag/bunnycdn_exporter
+    # - run: docker images
+    # - run: make docker-publish DOCKER_REPO=ricardoag/bunnycdn_exporter
 
   docker_hub_release_tags:
     executor: golang
