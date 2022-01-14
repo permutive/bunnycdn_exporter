@@ -42,6 +42,7 @@ jobs:
         destination: /build
 
   docker_hub_master:
+    context: prod
     docker:
     - image: docker:19.03.7
       auth:
@@ -68,6 +69,7 @@ jobs:
     # - run: make docker-publish DOCKER_REPO=ricardoag/bunnycdn_exporter
 
   docker_hub_release_tags:
+    context: prod
     executor: golang
 
     steps:
