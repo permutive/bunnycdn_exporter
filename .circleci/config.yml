@@ -32,7 +32,7 @@ jobs:
     steps:
     - checkout
     - run: make promu
-    - run: promu crossbuild -v
+    - run: promu crossbuild -v -p linux/386 linux/amd64
     - persist_to_workspace:
         root: .
         paths:
