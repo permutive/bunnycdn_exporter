@@ -78,7 +78,6 @@ jobs:
     - run: make promu
     - run: promu crossbuild -p linux/amd64 tarballs
     - run: promu checksum .tarballs
-    - run: promu release .tarballs
     - store_artifacts:
         path: .tarballs
         destination: releases
