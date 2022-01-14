@@ -82,16 +82,15 @@ jobs:
         path: .tarballs
         destination: releases
     - run: ln -s .build/linux-amd64/bunnycdn_exporter bunnycdn_exporter
-    - run: make docker DOCKER_IMAGE_TAG=$CIRCLE_TAG DOCKER_REPO=ricardoag/$CIRCLE_PROJECT_REPONAME
     - run:
         name: Login to Docker Hub
         command: echo ${DOCKER_HUB_PASSWORD} | docker login -u ${DOCKER_HUB_USERNAME} --password-stdin
-    - run: |
-        if [[ "$CIRCLE_TAG" =~ ^v[0-9]+(\.[0-9]+){2}$ ]]; then
-          make docker-tag-latest DOCKER_IMAGE_TAG="$CIRCLE_TAG" DOCKER_REPO=ricardoag/$CIRCLE_PROJECT_REPONAME
-        fi
-    - run: make docker-publish DOCKER_REPO=ricardoag/$CIRCLE_PROJECT_REPONAME
-
+    - run:
+        name: Build the Docker image
+        command: docker build -t ricardoag/$CIRCLE_PROJECT_REPONAME:$CIRCLE_TAG .
+    - run:
+        name: Docker Push the image to the Docker registry
+        command: docker push ricardoag/$CIRCLE_PROJECT_REPONAME:$CIRCLE_TAG
 workflows:
   version: 2
   bunnycdn_exporter:
