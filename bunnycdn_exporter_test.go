@@ -14,6 +14,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -72,7 +73,7 @@ func TestPullZoneList(t *testing.T) {
 		t.Fatal("Expecting 2 zones but got ", len(pullZones))
 	}
 	if pullZones[0].ID != 34567 || pullZones[0].Name != "pullzonename2" {
-		t.Fatal("Expecting ID 34567 and name pullzonename2 but got " + string(pullZones[0].ID) + " and " + pullZones[0].Name)
+		t.Fatal("Expecting ID 34567 and name pullzonename2 but got " + string(fmt.Sprint(pullZones[0].ID)) + " and " + pullZones[0].Name)
 	}
 }
 
