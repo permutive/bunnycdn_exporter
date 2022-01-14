@@ -32,7 +32,7 @@ jobs:
     steps:
     - checkout
     - run: make promu
-    - run: promu crossbuild -v -p linux/386 linux/amd64
+    - run: promu crossbuild -v -p linux/386 -p linux/amd64
     - persist_to_workspace:
         root: .
         paths:
@@ -69,7 +69,7 @@ jobs:
     - attach_workspace:
         at: .
     - run: make promu
-    - run: promu crossbuild -p linux/386 linux/amd64 tarballs
+    - run: promu crossbuild -p linux/386 -p linux/amd64 tarballs
     - run: promu checksum .tarballs
     - run: promu release .tarballs
     - store_artifacts:
