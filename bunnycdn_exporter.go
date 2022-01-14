@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	_ "net/http/pprof"
 	"net/url"
@@ -30,7 +31,6 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/prometheus/common/log"
 	"github.com/prometheus/common/version"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
@@ -303,7 +303,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 
 	// body, err := e.fetch("/metrics")
 	if err != nil {
-		log.Errorf("Unable to list pull zones: %v", err)
+		log.Printf("Unable to list pull zones: %v", err)
 		e.totalErrors.Inc()
 		return 0
 	}
@@ -314,8 +314,9 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 		stats, err := getStatisticsForPullZone(e.fetch, pullZone)
 		e.totalAPICalls.Inc()
 		if err != nil {
-			log.Errorf("Unable to collect stats: %v", err)
+			log.Printf("Unable to collect stats: %v", err)
 			e.totalErrors.Inc()
+			continue
 		}
 		aStatsObj = stats
 		for name, metric := range e.pullZoneMetrics {
@@ -323,7 +324,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 			case metricBandwidthUsed:
 				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.BandwidthUsed), pullZone.Name)
 			case metricBandwidthCached:
-				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.BandwidthUsed), pullZone.Name)
+				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.BandwidthCached), pullZone.Name)
 			case metricRequestsServer:
 				ch <- prometheus.MustNewConstMetric(metric, prometheus.GaugeValue, extractFromMap(stats.RequestsServed), pullZone.Name)
 			case metricPullRequestsPulled:
@@ -347,7 +348,7 @@ func (e *Exporter) scrape(ch chan<- prometheus.Metric) (up float64) {
 		e.totalAPICalls.Inc()
 
 		if err != nil {
-			log.Errorf("Unable to collect global stats (since no pullzone was found): %v", err)
+			log.Printf("Unable to collect global stats (since no pullzone was found): %v", err)
 			e.totalErrors.Inc()
 		}
 	}
@@ -375,13 +376,12 @@ func main() {
 		bunnyTimeout   = kingpin.Flag("bunnycdn.timeout", "Timeout for trying to get stats from BunnyCDN.").Default("10s").Duration()
 	)
 
-	log.AddFlags(kingpin.CommandLine)
 	kingpin.Version(version.Print("bunnycdn_exporter"))
 	kingpin.HelpFlag.Short('h')
 	kingpin.Parse()
 
-	log.Infoln("Starting bunnycdn_exporter", version.Info())
-	log.Infoln("Build context", version.BuildContext())
+	log.Println("Starting bunnycdn_exporter", version.Info())
+	log.Println("Build context", version.BuildContext())
 
 	exporter, err := NewExporter(*bunnyAPIURI, *bunnyAPIKey, *bunnySSLVerify, accountMetrics, pullZoneMetrics, *bunnyTimeout)
 	if err != nil {
@@ -390,7 +390,7 @@ func main() {
 	prometheus.MustRegister(exporter)
 	prometheus.MustRegister(version.NewCollector("bunnycdn_exporter"))
 
-	log.Infoln("Listening on", *listenAddress)
+	log.Println("Listening on", *listenAddress)
 	http.Handle(*metricsPath, promhttp.Handler())
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`<html>
