@@ -54,7 +54,6 @@ jobs:
     - run: make docker DOCKER_REPO=ricardoag/bunnycdn_exporter
     - run: docker images
     - run: docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-    - run: docker login -u $QUAY_LOGIN -p $QUAY_PASSWORD quay.io
     - run: make docker-publish
     - run: make docker-publish DOCKER_REPO=ricardoag/bunnycdn_exporter
 
@@ -70,7 +69,7 @@ jobs:
     - attach_workspace:
         at: .
     - run: make promu
-    - run: promu crossbuild tarballs
+    - run: promu crossbuild -p linux/386 linux/amd64 tarballs
     - run: promu checksum .tarballs
     - run: promu release .tarballs
     - store_artifacts:
@@ -78,16 +77,16 @@ jobs:
         destination: releases
     - run: ln -s .build/linux-amd64/bunnycdn_exporter bunnycdn_exporter
     - run: make docker DOCKER_IMAGE_TAG=$CIRCLE_TAG
-    - run: make docker DOCKER_IMAGE_TAG=$CIRCLE_TAG DOCKER_REPO=quay.io/prometheus
+    - run: make docker DOCKER_IMAGE_TAG=$CIRCLE_TAG DOCKER_REPO=ricardoag/bunnycdn_exporter
     - run: docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
     - run: docker login -u $QUAY_LOGIN -p $QUAY_PASSWORD quay.io
     - run: |
         if [[ "$CIRCLE_TAG" =~ ^v[0-9]+(\.[0-9]+){2}$ ]]; then
           make docker-tag-latest DOCKER_IMAGE_TAG="$CIRCLE_TAG"
-          make docker-tag-latest DOCKER_IMAGE_TAG="$CIRCLE_TAG" DOCKER_REPO=quay.io/prometheus
+          make docker-tag-latest DOCKER_IMAGE_TAG="$CIRCLE_TAG" DOCKER_REPO=ricardoag/bunnycdn_exporter
         fi
     - run: make docker-publish
-    - run: make docker-publish DOCKER_REPO=quay.io/prometheus
+    - run: make docker-publish DOCKER_REPO=ricardoag/bunnycdn_exporter
 
 workflows:
   version: 2
