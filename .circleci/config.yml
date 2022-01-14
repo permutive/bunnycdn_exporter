@@ -52,7 +52,9 @@ jobs:
     - run: ln -s .build/linux-amd64/bunnycdn_exporter bunnycdn_exporter
     - run: make docker DOCKER_REPO=ricardoag/bunnycdn_exporter
     - run: docker images
-    - run: docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+    - run:
+        name: Login to Docker Hub
+        command: echo ${DOCKER_HUB_PASSWORD} | docker login -u ${DOCKER_HUB_USERNAME} --password-stdin
     - run: make docker-publish DOCKER_REPO=ricardoag/bunnycdn_exporter
 
   docker_hub_release_tags:
