@@ -3,6 +3,7 @@ LABEL maintainer="Ricardo SRE <sre@ricardo.ch>"
 
 COPY --chown=1984:1984 bunnycdn_exporter /bin/bunnycdn_exporter
 
+EXPOSE 9584
+
 USER 1984
 ENTRYPOINT ["/bin/bunnycdn_exporter"]
-EXPOSE     9584
