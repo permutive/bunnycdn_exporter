@@ -84,6 +84,9 @@ func (s bunnyStatistics) trafficLocations() []bunnyLocation {
 	locations := make([]bunnyLocation, 0, len(s.GeoTrafficDistribution))
 	for loc, req := range s.GeoTrafficDistribution {
 		parts := strings.Split(loc, ":")
+		if len(parts) < 2 {
+			continue
+		}
 		locations = append(
 			locations,
 			bunnyLocation{
