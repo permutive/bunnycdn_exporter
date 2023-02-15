@@ -1,19 +1,22 @@
 module github.com/permutive/bunnycdn_exporter
 
 require (
-	github.com/alecthomas/assert v0.0.0-20170929043011-405dbfeb8e38 // indirect
-	github.com/alecthomas/colour v0.0.0-20160524082231-60882d9e2721 // indirect
-	github.com/alecthomas/repr v0.0.0-20181024024818-d37bc2a10ba1 // indirect
-	github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc // indirect
-	github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf // indirect
-	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/mattn/go-isatty v0.0.4 // indirect
-	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/prometheus/client_golang v0.9.2
-	github.com/prometheus/common v0.0.0-20181126121408-4724e9255275
-	github.com/sergi/go-diff v1.0.0 // indirect
-	github.com/sirupsen/logrus v0.0.0-20160425093237-cd7d1bbe4106 // indirect
-	github.com/stretchr/testify v1.2.2 // indirect
-	golang.org/x/sys v0.0.0-20160228042812-19ced1583f73 // indirect
-	gopkg.in/alecthomas/kingpin.v2 v2.2.5
+	github.com/prometheus/client_golang v1.11.1
+	github.com/prometheus/common v0.26.0
+	gopkg.in/alecthomas/kingpin.v2 v2.2.6
+)
+
+require (
+	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751 // indirect
+	github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d // indirect
+	github.com/beorn7/perks v1.0.1 // indirect
+	github.com/cespare/xxhash/v2 v2.1.1 // indirect
+	github.com/golang/protobuf v1.4.3 // indirect
+	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
+	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
+	github.com/prometheus/client_model v0.2.0 // indirect
+	github.com/prometheus/procfs v0.6.0 // indirect
+	github.com/sirupsen/logrus v1.6.0 // indirect
+	golang.org/x/sys v0.0.0-20210603081109-ebe580a85c40 // indirect
+	google.golang.org/protobuf v1.26.0-rc.1 // indirect
 )
