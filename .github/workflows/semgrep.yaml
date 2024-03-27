@@ -1,0 +1,17 @@
+name: Semgrep
+on:
+  workflow_dispatch: {}
+  pull_request: {}
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/semgrep.yaml
+  schedule:
+    # random HH:MM to avoid a load spike on GitHub Actions at 00:00
+    - cron: 5 16 * * *
+
+jobs:
+  security-scan:
+    uses: permutive/github-workflows/.github/workflows/semgrep.yaml@master
+    secrets: inherit
