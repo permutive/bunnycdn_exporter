@@ -2,13 +2,13 @@
 CURL Command:
 
 # load pull zones
-curl --header "Content-Type: application/json"      --header "Accept: application/json"      --header "AccessKey: <API_KEY>"   'https://bunnycdn.com/api/pullzone' | jq
+curl --header "Content-Type: application/json"      --header "Accept: application/json"      --header "AccessKey: <API_KEY>"   'https://api.bunny.net/pullzone' | jq
 
 # load stats
-curl --header "Content-Type: application/json"      --header "Accept: application/json"      --header "AccessKey: <API_KEY>"   'https://bunnycdn.com/api/statistics?dateFrom=2019-05-01&dateTo=2019-05-10&pullZone=65109&serverZoneId=-1&loadErrors=true' | jq
+curl --header "Content-Type: application/json"      --header "Accept: application/json"      --header "AccessKey: <API_KEY>"   'https://api.bunny.net/statistics?dateFrom=2019-05-01&dateTo=2019-05-10&pullZone=65109&serverZoneId=-1&loadErrors=true' | jq
 
 URL:
-https://bunnycdn.com/api/statistics?
+https://api.bunny.net/statistics?
   dateFrom=2019-05-01&
   dateTo=2019-05-01&
   pullZone=65109&
